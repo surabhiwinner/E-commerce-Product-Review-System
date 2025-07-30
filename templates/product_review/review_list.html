@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block section %}
+
+<div class="container">
+  <h2>Product Reviews</h2>
+  <div class="row">
+    {% for review in reviews %}
+      <div class="col-md-4">
+        <div class="review-card">
+          <h3>{{ review.product.name }}</h3>
+            <p><strong>Review ID:</strong> {{ review.id }}</p>
+            <img src="{{ review.product.image.url }}" alt="{{ review.product.name }}" class="img-fluid">
+
+          <p><strong>Rating:</strong> {{ review.rating }}/5</p>
+          <p>{{ review.comment }}</p>
+          <p><small>Reviewed by: {{ review.user.username }} on {{ review.created_at|date:"Y-m-d" }}</small></p>
+        </div>
+      </div>
+    {% empty %}
+      <p>No reviews available.</p>
+    {% endfor %}
+  </div>
+
+{% endblock%}
