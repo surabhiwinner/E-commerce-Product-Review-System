@@ -71,8 +71,14 @@
             {% else %}
             <li><a href="{% url 'product_review_list' %}">Product Review</a></li>
             {% endif %}
-          <!-- <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="blog.html">Blog</a></li> -->
+
+            {% if page == 'write_review_page' %}
+           <li><a href="{% url 'write_review' %}" class="active">Write Review</a></li>
+            {% else %}
+            <li><a href="{% url 'write_review' %}">Write Review</a></li>
+            {% endif %}
+            
+          <!-- <li><a href="blog.html">Blog</a></li> -->
           <li><a href="contact.html">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

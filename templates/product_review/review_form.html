@@ -4,9 +4,25 @@
 
 <div class="container">
   <h2>Product Reviews</h2>
-  <div class="row">
-    {% for review in reviews %}
-      <div class="col-md-4">
-        <div 
+
+    <form method="post" action="{% url 'product_review_list' %}">       
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="product" class="form-label">Product</label>
+            <select name="product" id="product" class="form-select">
+            {% for product in products %}
+                <option value="{{ product.id }}">{{ product.name }}</option>
+            {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="rating" class="form-label">Rating</label>
+            <input type="number" name="rating" id="rating" class="form-control" min="1" max="5" required>
+        </div>
+        <div class="mb-3">
+            <label for="comment" class="form-label">Comment</label>
+            <textarea name="comment" id="comment" class="form-control" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Review</button>
 
 {% endblock%}
